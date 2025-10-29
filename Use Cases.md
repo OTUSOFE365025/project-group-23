@@ -1,3 +1,5 @@
+# Use Cases
+
 | ID  | Use Case Name       | Primary Actor | Description                                                                                               |
 | --- | ------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
 | UC1 | Ask Question        | Student       | A student asks the system some questions concerning academic information (e.g., the schedule of classes). |
