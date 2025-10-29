@@ -1,3 +1,5 @@
+# Constraints
+
 | Constraint Type | Description                                                                                |
 | --------------- | ------------------------------------------------------------------------------------------ |
 | Technical       | Should have the ability to integrate with the existing LMS, calendar and registration API. |
