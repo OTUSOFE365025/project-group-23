@@ -22,7 +22,7 @@ AIDAP acts as a single, centralized access point for academic and campus-related
 ## Success Metrics
 - Achieve a student satisfaction score of **90% or higher** based on feedback surveys.
 - Maintain an **average response time of under 2 seconds**, even during high usage periods.
-- Ensure **99.5% system uptime on a monthly basis.
+- Ensure **99.5% system uptime** on a monthly basis.
 - Reduce support-related emails and help desk inquiries by approximately **25-30% within one semester**.
 - Continuously improve the accuracy and personalization of responses through ongoing model learning and updates.
   ## Summary
