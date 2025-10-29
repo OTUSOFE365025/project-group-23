@@ -1,6 +1,6 @@
 # Quality Attributes
 
-| ID  | Category            | Quality Attribute      | Description                                                         |
+| ID  | Category            | Quality Attributes      | Description                                                         |
 |-----|---------------------|------------------------|---------------------------------------------------------------------|
 | QA1 | **Performance**     | Response Time          | Response time should not take more than 2 seconds on average.       |
 | QA2 | **Availability**    | Uptime                 | System availability of 99.5% per month.                             |
