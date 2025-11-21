@@ -77,6 +77,7 @@
 | Fully Addressed | UC3 & CON1 | Integration Services | Sync External University Systems Efficiently |
 | Fully Addressed | UC4 & CON2 & QA3 | Auth Service (SSO) | Provides secure login and personalized options |
 | Fully Addressed | UC5 & CON5 | User Service / Database | manage users and their data |
+| Fully Addressed | UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based layout capable of inputting questions into AIDAP on many systems |
 | Partially Addressed | QA2 & QA6 & CON4 & UC6 | Monitoring Services | Monitoring Services |
 | Partially Addressed | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and cache |
 | Partially Addressed | UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
