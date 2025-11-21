@@ -1,1 +1,91 @@
-Include in this file the 7 steps for Iteration 1
+# ADD Process Iteration 1 — AIDAP
+
+## Step 1: Primary Functional Requirements
+
+| Use Case | Description |
+|----------|-------------|
+| UC-1 Ask Question | The user needs to be able to ask the system a question regarding their academic information (e.g., schedule, grades, emails) and receive a response |
+| UC-2 Set Reminder | The user needs to be able to set reminders for their classes and assignments |
+| UC-3 Manage Integrations | Admins should be able to establish integrations for external programs with the AI Digital Assistant Platform (LMS, Registration, Calendar, Email) |
+| UC-4 User Logon | Users should be able to sign into their own accounts and see options related to their role (Student, Lecturer, Admin, System Maintainer) |
+| UC-5 User Management | Admins have the ability to add/remove users and alter their data (passwords, names, etc.) |
+| UC-6 System Monitoring | The System Maintainer should be able to keep track of the health and uptime of the system |
+
+## Prioritized Quality Attribute Scenarios
+
+| QA | Description |
+|----|-------------|
+| QA-1 Performance | The system's average response time should be ≤ 2 seconds |
+| QA-2 Availability | The system should be available 99.5% of a month |
+| QA-3 Security | Secure access to AIDAP via single sign-on (SSO) |
+| QA-4 Scalability | System should be capable of supporting ~5,000 concurrent users |
+| QA-5 Usability | Interface for the system should adhere to conventional design standards |
+| QA-6 Maintainability | Assist with zero downtime updates and monitoring tools |
+| QA-7 Portability | System should be available for web and mobile with voice accessibility |
+
+## Constraints
+
+| Constraint | Description |
+|------------|-------------|
+| CON-1 | System should be able to integrate with LMS, Calendar, and Registration APIs |
+| CON-2 | Adhere to privacy and security standards of the institution |
+| CON-3 | Response time to queries should be ≤ 2 seconds |
+| CON-4 | 99.5% uptime monthly |
+| CON-5 | Personal information should not be lost in personal computers |
+| CON-6 | Should adhere to multi-language and accessibility support |
+
+## Step 2: Iteration 1 Goal
+
+Establish the overall system architecture for the AIDAP system and their individual responsibilities and interactions while considering the primary quality attributes (performance, availability, security, scalability, usability, maintainability, portability) and the system’s constraints.
+
+## Step 3: Elements to Decompose
+
+| Element | Description |
+|---------|-------------|
+| UI Elements | Web UI + Mobile UI + Voice interface |
+| AI Services / Business Logic | Intent Interpreter, Response Generator, Session Manager |
+| Integration Services | LMS, Calendar, Registration |
+| Data Layer | User Data, Reminders, Queries, Academic Information |
+| Notification Services | Email / SMS / Push |
+| Monitoring Services | System health dashboards, error monitoring, system logs |
+
+## Step 4: Design Decision
+
+| Design Decision | Rationale |
+|-----------------|-----------|
+| Rich Internet Application | Rich internet applications run inside a browser, accessible for staff and students. It allows a detailed and complex UI and handles some client-side processing. |
+
+## Step 5: Instantiate Components / Responsibilities / Interfaces
+
+| Component | Responsibilities | Key Interfaces / Notes |
+|-----------|-----------------|----------------------|
+| Web / Mobile / Voice Interface | Display info, accept queries, show reminders, announcements | askQuestion(), setReminder(), viewAnnouncements() |
+| API Gateway | Route requests, enforce security | HTTPS/REST/WS endpoints to services |
+| Auth Service (SSO) | Authenticate users | login(), validateToken() |
+| Session Manager | Manage sessions, manage conversations | startSession(), endSession(), getSessionContext() |
+| AI Engine | Parse queries, generate responses | analyzeQuery(text), getResponse(sessionID) |
+| Integration Service | Sync with LMS, Calendar, Registration | syncCourseInfo(), pushAnnouncement() |
+| User Management | Manage user profiles and roles | createUser(), updateUser(), deleteUser() |
+| Reminder Service | Set, get, and update reminders | addReminder(), getReminder() |
+| Notification Service | Send email / SMS / push notifications | sendNotification() |
+| Database / Cache | Persist users, reminders, queries; caching for performance | SQL database, Redis cache |
+| Monitoring / Logging | Track uptime, errors, system health | Automated monitoring platform |
+
+## Step 7: Driver / Design Decision / Rationale
+
+| State | Driver | Design Decision | Rationale |
+|-------|--------|----------------|-----------|
+| Partially Addressed | UC1 & QA4 & CON6 | UI Elements | Users can ask questions and view results on web, mobile with accessibility |
+| Partially Addressed | UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
+| Partially Addressed | UC3 & CON1 | Integration Services | Sync external university systems efficiently |
+| Partially Addressed | UC4 & CON2 & QA3 | Auth Service (SSO) | Provides secure login and personalized options |
+| Partially Addressed | UC5 | User Service / Database | Manage users and their data |
+| Partially Addressed | UC6 & QA2 & QA6 & CON4 | Monitoring Services | Ensures uptime and health tracking |
+| Partially Addressed | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and caching |
+| Partially Addressed | UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based layout capable of inputting questions into AIDAP on many systems |
+
+
+
+
+
+
