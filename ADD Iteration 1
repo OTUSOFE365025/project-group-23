@@ -73,16 +73,16 @@ Establish the overall system architecture for the AIDAP system and their individ
 
 ## Step 7: Driver / Design Decision / Rationale
 
-| Driver | Design Decision | Rationale |
-|--------|----------------|-----------|
+| State | Driver | Design Decision | Rationale |
+|-------|--------|----------------|-----------|
 | UC1 & QA4 & CON6 | UI Elements | Users can ask questions and view results on web, mobile with accessibility |
-| UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
-| UC3 & CON1 | Integration Services | Sync external university systems efficiently |
-| UC4 & CON2 & QA3 | Auth Service (SSO) | Provides secure login and personalized options |
-| UC5 | User Service / Database | Manage users and their data |
-| UC6 & QA2 & QA6 & CON4 | Monitoring Services | Ensures uptime and health tracking |
-| CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and caching |
-| UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based layout capable of inputting questions into AIDAP on many systems |
+| Partially Addressed | UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
+| Partially Addressed || UC3 & CON1 | Integration Services | Sync external university systems efficiently |
+| Partially Addressed | UC4 & CON2 & QA3 | Auth Service (SSO) | Provides secure login and personalized options |
+| Partially Addressed | UC5 | User Service / Database | Manage users and their data |
+| Partially Addressed | UC6 & QA2 & QA6 & CON4 | Monitoring Services | Ensures uptime and health tracking |
+| Partially Addressed | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and caching |
+| Partially Addressed | UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based layout capable of inputting questions into AIDAP on many systems |
 
 
 
