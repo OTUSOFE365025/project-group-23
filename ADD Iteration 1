@@ -35,6 +35,7 @@
 | CON-6 | Should adhere to multi-language and accessibility support |
 
 ## Step 2: Iteration 1 Goal
+
 Establish the overall system architecture for the AIDAP system and their individual responsibilities and interactions while considering the primary quality attributes (performance, availability, security, scalability, usability, maintainability, portability) and the system’s constraints.
 
 ## Step 3: Elements to Decompose
@@ -52,7 +53,7 @@ Establish the overall system architecture for the AIDAP system and their individ
 
 | Design Decision | Rationale |
 |-----------------|-----------|
-| Rich Internet Application | Rich internet applications are made to run inside a browser which would be widely accessible for staff and students. It allows for a detailed and complex UI and handles some processing on the client side. |
+| Rich Internet Application | Rich internet applications run inside a browser, accessible for staff and students. It allows a detailed and complex UI and handles some client-side processing. |
 
 ## Step 5: Instantiate Components / Responsibilities / Interfaces
 
@@ -82,4 +83,5 @@ Establish the overall system architecture for the AIDAP system and their individ
 | UC6 & QA2 & QA6 & CON4 | Monitoring Services | Ensures uptime and health tracking |
 | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and caching |
 | UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based layout capable of inputting questions into AIDAP on many systems |
+
 
