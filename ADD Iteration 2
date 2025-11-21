@@ -1,1 +1,82 @@
-Include in this file the 7 steps for Iteration 2
+# ADD Process Iteration 2 — AIDAP
+
+## Step 1: Primary Functional Requirements
+
+| Use Case | Description |
+|----------|-------------|
+| UC-1 Ask Question | The user needs to be able to ask the system a question regarding their academic information (e.g., schedule, grades, emails) and receive a response |
+| UC-2 Set Reminder | The user needs to be able to set reminders for their classes and assignments |
+| UC-3 Manage Integrations | Admins should be able to establish integrations for external programs with the AI Digital Assistant Platform (LMS, Registration, Calendar, Email) |
+| UC-4 User Logon | Users should be able to sign into their own accounts and see options related to their role (Student, Lecturer, Admin, System Maintainer) |
+| UC-5 User Management | Admins have the ability to add/remove users and alter their data (passwords, names, etc.) |
+| UC-6 System Monitoring | The System Maintainer should be able to keep track of the health and uptime of the system |
+
+## Prioritized Quality Attribute Scenarios
+
+| QA | Description |
+|----|-------------|
+| QA-1 Performance | The system's average response time should be ≤ 2 seconds |
+| QA-2 Availability | The system should be available 99.5% of a month |
+| QA-3 Security | Secure access to AIDAP via single sign-on (SSO) |
+| QA-4 Scalability | System should be capable of supporting ~5,000 concurrent users |
+| QA-5 Usability | Interface for the system should adhere to conventional design standards |
+| QA-6 Maintainability | Assist with zero downtime updates and monitoring tools |
+| QA-7 Portability | System should be available for web and mobile with voice accessibility |
+
+## Constraints
+
+| Constraint | Description |
+|------------|-------------|
+| CON-1 | System should be able to integrate with LMS, Calendar, and Registration APIs |
+| CON-2 | Adhere to privacy and security standards of the institution |
+| CON-3 | Response time to queries should be ≤ 2 seconds |
+| CON-4 | 99.5% uptime monthly |
+| CON-5 | Personal information should not be lost in personal computers |
+| CON-6 | Should adhere to multi-language and accessibility support |
+
+## Step 2: Iteration 2 Goal
+ Identify structures to support primary functionality, including system components, responsibilities, and interfaces, while ensuring quality attributes (performance, availability, security, scalability, usability, maintainability, portability) are addressed with a focus on the main use cases UC-1 UC-3 & UC-4
+
+## Step 3: Elements to Decompose
+| Element | Description |
+|---------|-------------|
+| UI Elements | Web UI + Mobile UI + Voice interface |
+| AI Services / Business Logic | Intent Interpreter, Response Generator, Session Manager |
+| Integration Services | LMS, Calendar, Registration |
+| Data Layer | User Data, Reminders, Queries, Academic Information |
+
+## Step 4: Design Decision
+
+| Design Decision | Rationale |
+|-----------------|-----------|
+| Domain Object | By using domain objects the AIDAP system divides its responsibilities into different domains. Each domain covers a functional requirement of the overall system that works together to create the desired functionality while becoming much less coupled and more modular than it would otherwise be. For the AIDAP system UC-1, UC-3 and UC-4 as main use cases would each become a primary domain with others added if necessary. |
+|-----------------|-----------|
+| Hibernate Framework | The hibernate framework allows objects to persist within a relational database. This would allow the AIDAP system easy retrieval of data for academic queries already asked and stored within its own database to put less stress on the external University database when dealing with users. Additionally it would help with ensuring each user’s unique data is tied to them as relational databases store data based on its relation to other data (i.e. schedule stored based on its student) which would make the system more secure and efficient. |
+
+## Step 5: Instantiate Components / Responsibilities / Interfaces
+
+| Component | Responsibilities | Key Interfaces / Notes |
+|-----------|-----------------|----------------------|
+| Web / Mobile / Voice Interface | Display info, accept queries | askQuestion(), setReminder(), viewAnnouncements() |
+| Auth Service (SSO) | Authenticate users | login(), validateToken() |
+| Session Manager | Manage sessions, manage conversations | startSession(), endSession(), getSessionContext() |
+| AI Engine | Parse queries, generate responses | analyzeQuery(text), getResponse(sessionID) |
+| Input Handler | Normalize inputs (text / voice) | handleInput(inputEvent) |
+| Integration Service | Sync with LMS, Calendar, Registration | syncCourseInfo(), pushAnnouncement() |
+| User Management | Manage user profiles and roles | createUser(), updateUser(), deleteUser() |
+| Reminder Service | Set, get, and update reminders | addReminder(), getReminder() |
+| Notification Service | Send email / SMS / push notifications | sendNotification() |
+| Hibernate Framework Database / Cache | Persist users, reminders, queries; caching for performance | SQL database, Redis cache |
+| Domain Objects | Breaks the system into smaller domains | Each main use case becomes a primary domain object |
+
+## Step 7: Driver / Design Decision / Rationale
+
+| State | Driver | Design Decision | Rationale |
+|-------|--------|----------------|-----------|
+| Fully Addressed | UC1 & QA4 & QA5 & CON6 & QA7 | UI elements | Users can ask questions and view results on web and mobile with accessibility |
+| Fully Addressed | UC3 & CON1 | Integration Services | Sync External University Systems Efficiently |
+| Fully Addressed | UC4 & CON2 & QA3 | Auth Service (SSO) | Provides secure login and personalized options |
+| Fully Addressed | UC5 & CON5 | User Service / Database | manage users and their data |
+| Partially Addressed | QA2 & QA6 & CON4 & UC6 | Monitoring Services | Monitoring Services |
+| Partially Addressed | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and cache |
+| Partially Addressed | UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
