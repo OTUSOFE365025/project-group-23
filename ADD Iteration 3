@@ -1,1 +1,85 @@
-Include in this file the 7 steps for Iteration 3
+# ADD Process Iteration 3 — AIDAP
+
+## Step 1: Primary Functional Requirements
+
+| Use Case | Description |
+|----------|-------------|
+| UC-1 Ask Question | The user needs to be able to ask the system a question regarding their academic information (e.g., schedule, grades, emails) and receive a response |
+| UC-2 Set Reminder | The user needs to be able to set reminders for their classes and assignments |
+| UC-3 Manage Integrations | Admins should be able to establish integrations for external programs with the AI Digital Assistant Platform (LMS, Registration, Calendar, Email) |
+| UC-4 User Logon | Users should be able to sign into their own accounts and see options related to their role (Student, Lecturer, Admin, System Maintainer) |
+| UC-5 User Management | Admins have the ability to add/remove users and alter their data (passwords, names, etc.) |
+| UC-6 System Monitoring | The System Maintainer should be able to keep track of the health and uptime of the system |
+
+## Prioritized Quality Attribute Scenarios
+
+| QA | Description |
+|----|-------------|
+| QA-1 Performance | The system's average response time should be ≤ 2 seconds |
+| QA-2 Availability | The system should be available 99.5% of a month |
+| QA-3 Security | Secure access to AIDAP via single sign-on (SSO) |
+| QA-4 Scalability | System should be capable of supporting ~5,000 concurrent users |
+| QA-5 Usability | Interface for the system should adhere to conventional design standards |
+| QA-6 Maintainability | Assist with zero downtime updates and monitoring tools |
+| QA-7 Portability | System should be available for web and mobile with voice accessibility |
+
+## Constraints
+
+| Constraint | Description |
+|------------|-------------|
+| CON-1 | System should be able to integrate with LMS, Calendar, and Registration APIs |
+| CON-2 | Adhere to privacy and security standards of the institution |
+| CON-3 | Response time to queries should be ≤ 2 seconds |
+| CON-4 | 99.5% uptime monthly |
+| CON-5 | Personal information should not be lost in personal computers |
+| CON-6 | Should adhere to multi-language and accessibility support |
+
+## Step 2: Iteration 2 Goal
+Iteration 3 Goal: Address 3 quality attribute scenarios. Specifically QA-2, QA-3, and QA-5
+
+## Step 3: Elements to Decompose
+| Element | Description |
+|---------|-------------|
+| Ai Services / business logic | Intent interpreter, Response Generator, Session manager |
+| Data Layer | User data, Reminders, Queries, Course info, Announcements |
+| User Interfaces | Web UI, Mobile UI, Voice Interface |
+
+## Step 4: Design Decision
+
+| Design Decision | Rationale |
+|-----------------|-----------|
+| Rich Internet Application | Rich internet applications are made to run inside a browser which would be widely accessible for the numerous staff and students and simple to use as they have nothing they need to install. It allows for a detailed and complex UI and would handle some processing on the client side that would easily handle the requirements for QA-5
+|-----------------|-----------|
+| Spring Security Framework | Spring Security is a framework that provides a secure method for authentication and authorization for applications. This will allow us to use an established security framework in our AIDAP system that will fulfill QA-3 requirements for user security, without having to create our own secure system from the ground up |
+|-----------------|-----------|
+| Availability tactics | By using availability tactics in our system design to address QA 2 we can design the AIDAP to detect faults on its own through heartbeats, timestamps, etc and then handle the faults on its own with redundancies or rollbacks or another method which maximizes our system uptime as faults and errors will be handled as they come up instead of building and requiring system downtime to solve |
+
+## Step 5: Instantiate Components / Responsibilities / Interfaces
+
+| Component | Responsibilities | Key Interfaces / Notes |
+|-----------|-----------------|----------------------|
+| Web / Mobile / Voice Interface | Display info, accept queries | askQuestion(), setReminder(), viewAnnouncements() |
+| Auth Service (SSO) / Spring Security | Authenticate users | login(), validateToken() |
+| Session Manager | Manage sessions, manage conversations | startSession(), endSession(), getSessionContext() |
+| AI Engine | Parse queries, generate responses | analyzeQuery(text), getResponse(sessionID) |
+| Input Handler | Normalize inputs (text / voice) | handleInput(inputEvent) |
+| Integration Service | Sync with LMS, Calendar, Registration | syncCourseInfo(), pushAnnouncement() |
+| User Management | Manage user profiles and roles | createUser(), updateUser(), deleteUser() |
+| Reminder Service | Set, get, and update reminders | addReminder(), getReminder() |
+| Notification Service | Send email / SMS / push notifications | sendNotification() |
+| Hibernate Framework Database / Cache | Persist users, reminders, queries; caching for performance | SQL database, Redis cache |
+| Domain Objects | Breaks the system into smaller domains | Each main use case becomes a primary domain object |
+| Monitoring / Logging / Availability tactics | Track uptime, errors, system health, automatically handle errors | Automated monitoring platform |
+
+## Step 7: Driver / Design Decision / Rationale
+
+| State | Driver | Design Decision | Rationale |
+|-------|--------|----------------|-----------|
+| Fully Addressed | UC1 & QA4 & QA5 & CON6 & QA7 | UI elements | Users can ask questions and view results on web and mobile with accessibility |
+| Fully Addressed | UC3 & CON1 | Integration Services | Sync External University Systems Efficiently |
+| Fully Addressed | UC4 & CON2 & QA3 | Auth Service (SSO) | Provides secure login and personalized options |
+| Fully Addressed | UC5 & CON5 | User Service / Database | manage users and their data |
+| Fully Addressed | UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based layout capable of inputting questions into AIDAP on many systems |
+| Fully Addressed | QA2 & QA6 & CON4 & UC6 | Monitoring Services / Availability tactics | Monitoring Services / availability tacics ensures maximum uptime of the system and handles errors |
+| Partially Addressed | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and cache |
+| Partially Addressed | UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
