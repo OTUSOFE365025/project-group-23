@@ -83,3 +83,18 @@ Iteration 3 Goal: Address 3 quality attribute scenarios. Specifically QA-2, QA-3
 | Fully Addressed | QA2 & QA6 & CON4 & UC6 | Monitoring Services / Availability tactics | Monitoring Services / availability tacics ensures maximum uptime of the system and handles errors |
 | Partially Addressed | CON3 & QA1 | API Gateway & Cache | Ensures <2s response via routing and cache |
 | Partially Addressed | UC2 | Session Manager & Notifications | Allows reminders to be set and sent reliably |
+
+
+
+
+## ATAM Scenario Analysis Table – Iteration 3
+
+| Scenario | Source | Stimulus | Environment | Artifact | Response | Response Measure |
+|----------|--------|---------|------------|---------|---------|----------------|
+| Student asks question during peak usage | UC1, QA1, QA4 | Student queries system with natural language | Normal system load with 5000 concurrent users | AI Engine, API Gateway, Database | System interprets query and returns answer | < 2 seconds response time, query handled correctly |
+| Admin sets up integration with LMS | UC3, QA3, QA2 | Admin configures new LMS integration | System running under normal load | Integration Service, Auth Service | System establishes secure connection to LMS and syncs data | Integration successful, no downtime, logged in monitoring system |
+| Student logs in and views personalized dashboard | UC4, QA3, QA5 | Student signs in via SSO | Peak usage | Auth Service, UI, Session Manager | System authenticates user and displays relevant info | Successful login, correct info displayed, < 2 sec response |
+| Maintainer monitors system | UC6, QA2, QA6 | Maintainer checks health dashboard | Normal load | Monitoring / Logging / Availability tactics | Dashboard updates in real-time, errors flagged | 99.5% uptime, errors detected and handled automatically |
+| Student sets reminder | UC2, QA1, QA5 | Student sets reminder for assignment | Normal load | Session Manager, Reminder Service, Notification Service | Reminder stored and notification scheduled | Reminder successfully scheduled and delivered |
+| User asks question while offline | UC1, QA5, QA7, CON6 | Student asks question on mobile offline | Limited connectivity | UI, Cache | System retrieves cached answer and stores query | Answer returned from cache, system queues live sync |
+
