@@ -98,3 +98,18 @@ Iteration 3 Goal: Address 3 quality attribute scenarios. Specifically QA-2, QA-3
 | Student sets reminder | UC2, QA1, QA5 | Student sets reminder for assignment | Normal load | Session Manager, Reminder Service, Notification Service | Reminder stored and notification scheduled | Reminder successfully scheduled and delivered |
 | User asks question while offline | UC1, QA5, QA7, CON6 | Student asks question on mobile offline | Limited connectivity | UI, Cache | System retrieves cached answer and stores query | Answer returned from cache, system queues live sync |
 
+## Drivers / Design Decision / Rationale – Iteration 3
+
+| State | Driver | Design Decision | Rationale |
+|-------|--------|----------------|-----------|
+| Fully Addressed | UC1 & QA4 & QA5 & CON6 & QA7 | UI Elements | Users can ask questions and view results on web and mobile with accessibility |
+| Fully Addressed | UC3 & CON1 | Integration Services | Sync External University Systems Efficiently |
+| Fully Addressed | UC4 & CON2 & QA3 | Auth Service (SSO) / Spring Security | Provides secure login and personalized options |
+| Fully Addressed | UC5 & CON5 | User Service / Database | Manage users and their data securely |
+| Fully Addressed | UC1 & QA5 & QA7 & CON5 | Rich Internet Application | User-friendly web-based interface that allows questions to be entered into AIDAP across multiple systems |
+| Fully Addressed | QA2 & QA6 & CON4 & UC6 | Monitoring Services / Availability Tactics | Ensures maximum uptime, detects and handles errors automatically |
+| Fully Addressed | CON3 & QA1 | API Gateway & Cache | Efficiently routes requests and uses caching to ensure response times under 2 seconds |
+| Fully Addressed | UC2 | Session Manager & Notifications | Ensures reminders are set and delivered reliably to users |
+| Fully Addressed | UC1 & UC4 & QA7 | Input Handler & AI Engine | Normalizes input (text/voice) and parses queries accurately for web, mobile, and voice |
+
+
